@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PCFViewController : UIViewController
+@interface PCFViewController : UIViewController <UIWebViewDelegate>
+
+@property (nonatomic) IBOutlet UIWebView *webview;
+@property (nonatomic) IBOutlet UILabel *label;
 
 @end

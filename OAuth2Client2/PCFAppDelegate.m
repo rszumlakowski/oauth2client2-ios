@@ -7,12 +7,36 @@
 //
 
 #import "PCFAppDelegate.h"
+#import <NXOAuth2Client/NXOAuth2.h>
 
 @implementation PCFAppDelegate
 
++ (void)initialize;
+{
+    [[NXOAuth2AccountStore sharedStore] setClientID:@"947045348411-lf2k2rpp7gmhgonthk2l39221ei36ugq.apps.googleusercontent.com"
+                                             secret:@"cYvu_h-koYhJYYzKk7aEXpxr"
+                                              scope:[NSSet setWithArray:@[@"profile", @"email"]]
+                                   authorizationURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"]
+                                           tokenURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/token"]
+                                        redirectURL:[NSURL URLWithString:@"https://mobile.cf.pivotal.com/oauth2callback"]
+                                     forAccountType:@"Google"];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"Google"
+//                                                              username:@"rszumlakowski@pivotallabs.com"
+//                                                              password:@"nxjufsefhoavneuo"];
+//    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"Google"];
+    
+    
+    
     // Override point for customization after application launch.
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSLog(@"Received url '%@'", url);
     return YES;
 }
 							
